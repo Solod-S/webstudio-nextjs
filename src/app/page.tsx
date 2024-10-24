@@ -1,9 +1,11 @@
-import Layout from './components/Layout';
+import Features from './components/homePage/Features';
+import Hero from './components/homePage/Hero';
 
 export default function Home() {
   return (
     <div>
-      <h1>Home page</h1>
+      <Hero />
+      <Features />
     </div>
   );
 }
