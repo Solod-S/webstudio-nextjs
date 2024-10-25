@@ -13,7 +13,7 @@
         rgba(47, 48, 58, 0.4),
         rgba(47, 48, 58, 0.4)
       ),
-      url(../../images/hero-mobile.webp);
+      url(/images/hero-mobile.webp);
     content: '';
     background-size: cover;
     background-repeat: no-repeat;
@@ -24,7 +24,7 @@
           rgba(47, 48, 58, 0.4),
           rgba(47, 48, 58, 0.4)
         ),
-        url(../../images/hero-mobile@2x.webp);
+        url(/images/hero-mobile@2x.webp);
     }
     @media screen and (min-resolution: 3dppx) {
       background-image: linear-gradient(
@@ -32,7 +32,7 @@
           rgba(47, 48, 58, 0.4),
           rgba(47, 48, 58, 0.4)
         ),
-        url(../../images/hero-mobile@3x.webp);
+        url(/images/hero-mobile@3x.webp);
     }
   }
   @media screen and (min-width: $breakpointTablet) {
@@ -44,7 +44,7 @@
         rgba(47, 48, 58, 0.4),
         rgba(47, 48, 58, 0.4)
       ),
-      url(../../images/hero-tablet.webp);
+      url(/images/hero-tablet.webp);
     content: '';
     background-size: cover;
     background-repeat: no-repeat;
@@ -54,7 +54,7 @@
           rgba(47, 48, 58, 0.4),
           rgba(47, 48, 58, 0.4)
         ),
-        url(../../images/hero-tablet@2x.webp);
+        url(/images/hero-tablet@2x.webp);
     }
     @media screen and (min-resolution: 3dppx) {
       background-image: linear-gradient(
@@ -62,7 +62,7 @@
           rgba(47, 48, 58, 0.4),
           rgba(47, 48, 58, 0.4)
         ),
-        url(../../images/hero-tablet@3x.webp);
+        url(/images/hero-tablet@3x.webp);
     }
   }
   @media screen and (min-width: $breakpointDesktop) {
@@ -75,7 +75,7 @@
         rgba(47, 48, 58, 0.4),
         rgba(47, 48, 58, 0.4)
       ),
-      url(../../images/hero-pc.webp);
+      url(/images/hero-pc.webp);
     content: '';
     @media screen and (min-resolution: 2dppx) {
       background-image: linear-gradient(
@@ -83,7 +83,7 @@
           rgba(47, 48, 58, 0.4),
           rgba(47, 48, 58, 0.4)
         ),
-        url(../../images/hero-pc@2x.webp);
+        url(/images/hero-pc@2x.webp);
     }
     @media screen and (min-resolution: 3dppx) {
       background-image: linear-gradient(
@@ -91,7 +91,7 @@
           rgba(47, 48, 58, 0.4),
           rgba(47, 48, 58, 0.4)
         ),
-        url(../../images/hero-pc@3x.webp);
+        url(/images/hero-pc@3x.webp);
     }
   }
 
