@@ -2,7 +2,11 @@ import React from 'react';
 import Link from 'next/link';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { usePathname } from 'next/navigation';
+
 const Header = () => {
+  const pathName = usePathname();
+  console.log(`pathName`, pathName);
   return (
     <header>
       <div className="navigation container">
@@ -36,28 +40,36 @@ const Header = () => {
           <nav className="navigation__menu">
             <ul className="navigation__list">
               <li className="navigation__item navigation__item--current-page-status">
-                <a
-                  className="navigation__link navigation__link--current-page-status navigation__link--slider"
-                  href="#"
+                <Link
+                  className={
+                    pathName === '/'
+                      ? 'navigation__link  navigation__link--slider navigation__link--current-page-status'
+                      : 'navigation__link  navigation__link--slider '
+                  }
+                  href="/"
                 >
                   Studio
-                </a>
+                </Link>
               </li>
               <li className="navigation__item">
-                <a
-                  className="navigation__link navigation__link--slider"
-                  href="#"
+                <Link
+                  className={
+                    pathName === '/portfolio'
+                      ? 'navigation__link  navigation__link--slider navigation__link--current-page-status'
+                      : 'navigation__link  navigation__link--slider '
+                  }
+                  href="/portfolio"
                 >
                   Portfolio
-                </a>
+                </Link>
               </li>
               <li className="navigation__item">
-                <a
+                <Link
                   className="navigation__link navigation__link--slider"
-                  href="#"
+                  href="/contacts"
                 >
                   Contact
-                </a>
+                </Link>
               </li>
             </ul>
           </nav>
