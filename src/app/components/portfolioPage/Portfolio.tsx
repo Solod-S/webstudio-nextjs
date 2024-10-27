@@ -1,20 +1,7 @@
 'use client';
-
-interface Image {
-  desktop: string;
-  table: string;
-  mobile: string;
-  alt: string;
-}
-
-interface Card {
-  id: number;
-  link: string;
-  image: Image;
-  title: string;
-  category: string;
-  description?: string;
-}
+import { useState } from 'react';
+import Gallery, { Card } from './Gallery';
+import ButtonsPanel from './ButtonsPanel';
 
 const cards: Card[] = [
   {
@@ -27,7 +14,7 @@ const cards: Card[] = [
     },
     link: 'https://google.com/',
     title: 'Technoquack',
-    category: 'Web-site',
+    category: 'Web-sites',
     description:
       'The resource offers comprehensive offers with different levels of functionality and services. All this will allow the visitor to obtain comprehensive information about company or individual.',
   },
@@ -55,7 +42,7 @@ const cards: Card[] = [
     },
     link: 'https://google.com/',
     title: 'Restaurant Seafood',
-    category: 'App',
+    category: 'Applications',
     description:
       'The resource offers comprehensive offers with different levels of functionality and services. All this will allow the visitor to obtain comprehensive information about company or individual.',
   },
@@ -83,7 +70,7 @@ const cards: Card[] = [
     },
     link: 'https://google.com/',
     title: 'Project Boxes',
-    category: 'App',
+    category: 'Applications',
     description:
       'The resource offers comprehensive offers with different levels of functionality and services. All this will allow the visitor to obtain comprehensive information about company or individual.',
   },
@@ -97,7 +84,7 @@ const cards: Card[] = [
     },
     link: 'https://google.com/',
     title: 'Inspiration has no Borders',
-    category: 'Web-site',
+    category: 'Web-sites',
     description:
       'The resource offers comprehensive offers with different levels of functionality and services. All this will allow the visitor to obtain comprehensive information about company or individual.',
   },
@@ -139,131 +126,24 @@ const cards: Card[] = [
     },
     link: 'https://google.com/',
     title: 'Growing Business',
-    category: 'App',
+    category: 'Applications',
     description:
       'The resource offers comprehensive offers with different levels of functionality and services. All this will allow the visitor to obtain comprehensive information about company or individual.',
   },
 ];
 
-interface GalleryProps {
-  cards: Card[];
-}
-
-const Gallery: React.FC<GalleryProps> = ({ cards }) => {
-  return (
-    <ul className="card-set">
-      {cards.map((card) => (
-        <li key={card.id} className="card-set__item">
-          <a
-            href={card.link}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            className="card-set__link"
-          >
-            <div className="graphic-content">
-              <picture>
-                <source
-                  srcSet={`
-                          ${card.image.desktop} 1x,
-                          ${card.image.desktop.replace('.jpg', '@2x.jpg')} 2x,
-                          ${card.image.desktop.replace('.jpg', '@3x.jpg')} 3x
-                        `}
-                  media="(min-width: 1200px)"
-                />
-                <source
-                  srcSet={`
-                          ${card.image.table} 1x,
-                          ${card.image.table.replace('.jpg', '@2x.jpg')} 2x,
-                          ${card.image.table.replace('.jpg', '@3x.jpg')} 3x
-                        `}
-                  media="(min-width: 768px)"
-                />
-                <source
-                  srcSet={`
-                          ${card.image.mobile} 1x,
-                          ${card.image.mobile.replace('.jpg', '@2x.jpg')} 2x,
-                          ${card.image.mobile.replace('.jpg', '@3x.jpg')} 3x
-                        `}
-                  media="(min-width: 320px)"
-                />
-                <img
-                  className="graphic-content__img"
-                  src={card.image.mobile}
-                  alt={card.image.alt}
-                  width="370"
-                />
-              </picture>
-
-              <div className="overflow">
-                <p className="graphic-content__img-overflow">
-                  {card.description}
-                </p>
-              </div>
-            </div>
-            <div className="text-content">
-              <h2 className="text-content__title">{card.title}</h2>
-              <p className="text-content__text">{card.category}</p>
-            </div>
-          </a>
-        </li>
-      ))}
-    </ul>
-  );
-};
-
 function Portfolio() {
+  const [gallery, setGallery] = useState(cards || []);
+  const [activeFilter, setActiveFilter] = useState('All');
   return (
     <section className="section portfolio">
       <div className="container">
         <h1 className="--visually-hidden">Portfolio</h1>
-        <ul className="buttons-set">
-          <li className="buttons-set__item">
-            <button
-              className="buttons-set__button"
-              type="button"
-              data-filter="all"
-            >
-              All
-            </button>
-          </li>
-          <li className="buttons-set__item">
-            <button
-              className="buttons-set__button"
-              type="button"
-              data-filter="web-site"
-            >
-              Web-sites
-            </button>
-          </li>
-          <li className="buttons-set__item">
-            <button
-              className="buttons-set__button"
-              type="button"
-              data-filter="app"
-            >
-              Applications
-            </button>
-          </li>
-          <li className="buttons-set__item">
-            <button
-              className="buttons-set__button"
-              type="button"
-              data-filter="design"
-            >
-              Design
-            </button>
-          </li>
-          <li className="buttons-set__item">
-            <button
-              className="buttons-set__button"
-              type="button"
-              data-filter="marketing"
-            >
-              Marketing
-            </button>
-          </li>
-        </ul>
-        <Gallery cards={cards} />
+        <ButtonsPanel
+          setActiveFilter={setActiveFilter}
+          activeFilter={activeFilter}
+        />
+        <Gallery cards={gallery} activeFilter={activeFilter} />
       </div>
     </section>
   );
