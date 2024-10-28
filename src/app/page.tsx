@@ -1,6 +1,8 @@
-import components from './components/homePage';
+import homePagecomponents from './components/homePage';
+import sharedPageComponents from './components/shared';
 
-const { Features, Hero, KindOfActivity, OurTeam, RegularClients } = components;
+const { Features, Hero, KindOfActivity, OurTeam } = homePagecomponents;
+const { RegularClients } = sharedPageComponents;
 
 export default function Home() {
   return (

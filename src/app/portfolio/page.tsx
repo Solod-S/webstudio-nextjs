@@ -1,6 +1,6 @@
-import components from '../components/portfolioPage';
+import portfolioPageComponents from '../components/portfolioPage';
 
-const { Portfolio } = components;
+const { Portfolio } = portfolioPageComponents;
 
 export default function Home() {
   return (

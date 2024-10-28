@@ -64,7 +64,11 @@ const Header = () => {
               </li>
               <li className="navigation__item">
                 <Link
-                  className="navigation__link navigation__link--slider"
+                  className={
+                    pathName === '/contacts'
+                      ? 'navigation__link  navigation__link--slider navigation__link--current-page-status'
+                      : 'navigation__link  navigation__link--slider '
+                  }
                   href="/contacts"
                 >
                   Contact
