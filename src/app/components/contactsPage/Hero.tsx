@@ -1,4 +1,8 @@
-function Hero() {
+interface HeroProps {
+  openModal: () => void;
+}
+
+function Hero({ openModal }: HeroProps) {
   return (
     <section className="hero-contact">
       <h1 className="hero-contact__title">
@@ -15,7 +19,11 @@ function Hero() {
         // type="video/mp4"
       ></video>
 
-      <button className="hero-contact__button" data-modal-open>
+      <button
+        className="hero-contact__button"
+        data-modal-open
+        onClick={openModal}
+      >
         Place an order
       </button>
     </section>
