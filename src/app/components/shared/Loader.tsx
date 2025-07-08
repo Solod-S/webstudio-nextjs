@@ -4,16 +4,21 @@ import { ClipLoader } from 'react-spinners';
 interface LoaderProps {
   size?: number;
   color?: string;
+  height?: string;
 }
 
-const Loader: FC<LoaderProps> = ({ size = 50, color = '#2196F3' }) => {
+const Loader: FC<LoaderProps> = ({
+  size = 50,
+  color = '#2196F3',
+  height = '100vh',
+}) => {
   return (
     <div
       style={{
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100vh',
+        height,
       }}
     >
       <ClipLoader size={size} color={color} />

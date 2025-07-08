@@ -1,11 +1,30 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-
-import { RxHamburgerMenu } from 'react-icons/rx';
 import { usePathname } from 'next/navigation';
 
 const Header = () => {
+  const [openMobileMenu, setOpenMobileMenu] = useState(false);
   const pathName = usePathname();
+
+  useEffect(() => {
+    const menuWrapper = document.querySelector('.navigation__menu-wrapper');
+
+    if (openMobileMenu) {
+      menuWrapper?.classList.add('--is-open');
+      document.body.style.overflow = 'hidden'; // Запрещаем прокрутку
+    } else {
+      menuWrapper?.classList.remove('--is-open');
+      document.body.style.overflow = ''; // Восстанавливаем прокрутку
+    }
+
+    // Чистим эффект при размонтировании компонента
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [openMobileMenu]);
+
+  // --is-open
   return (
     <header>
       <div className="navigation container">
@@ -17,25 +36,28 @@ const Header = () => {
           type="button"
           aria-expanded="false"
           data-menu-button
+          onClick={() => setOpenMobileMenu((prevState) => !prevState)}
         >
-          <RxHamburgerMenu size={30} />
           <svg
             className="mobile-btn__svg"
             width="40px"
             height="40px"
             aria-label="menu"
           >
-            <use
-              className="mobile-btn__icon-close"
-              href="./images/symbol-defs.svg#icon-mobile-close"
-            ></use>
-            <use
-              className="mobile-btn__icon-menu"
-              href="./images/symbol-defs.svg#icon-mobile-menu"
-            ></use>
+            {openMobileMenu ? (
+              <use
+                className="mobile-btn__icon-menu"
+                href="./images/symbol-defs.svg#icon-mobile-close"
+              ></use>
+            ) : (
+              <use
+                className="mobile-btn__icon-menu"
+                href="./images/symbol-defs.svg#icon-mobile-menu"
+              ></use>
+            )}
           </svg>
         </button>
-        <div className="navigation__menu-wrapper" data-menu>
+        <div className="navigation__menu-wrapper " data-menu>
           <nav className="navigation__menu">
             <ul className="navigation__list">
               <li className="navigation__item navigation__item--current-page-status">
